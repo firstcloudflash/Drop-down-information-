@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Features Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #5a5a5a;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .info-display {
+            margin-bottom: 20px;
+        }
+        .info-display button {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Features Demo</h1>
+
+        <h2>Dropdown Menu</h2>
+        <div class="dropdown">
+            <select id="featureSelect" onchange="displayFeatureInfo()">
+                <option value="">Select a feature...</option>
+                <option value="feature1">Feature 1</option>
+                <option value="feature2">Feature 2</option>
+                <option value="feature3">Feature 3</option>
+            </select>
+        </div>
+        <div id="featureInfo" class="info"></div>
+
+        <h2>Information Display</h2>
+        <div class="info-display">
+            <button onclick="toggleInfo('info1')">Toggle Info 1</button>
+            <button onclick="toggleInfo('info2')">Toggle Info 2</button>
+            <button onclick="toggleInfo('info3')">Toggle Info 3</button>
+        </div>
+        <div id="info1" class="info">This is information 1.</div>
+        <div id="info2" class="info">This is information 2.</div>
+        <div id="info3" class="info">This is information 3.</div>
+    </div>
+
+    <script>
+        function displayFeatureInfo() {
+            const featureSelect = document.getElementById('featureSelect');
+            const featureInfo = document.getElementById('featureInfo');
+            const selectedFeature = featureSelect.value;
+
+            let infoText = '';
+            switch (selectedFeature) {
+                case 'feature1':
+                    infoText = 'Details about Feature 1.';
+                    break;
+                case 'feature2':
+                    infoText = 'Details about Feature 2.';
+                    break;
+                case 'feature3':
+                    infoText = 'Details about Feature 3.';
+                    break;
+                default:
+                    infoText = '';
+            }
+
+            featureInfo.textContent = infoText;
+            featureInfo.style.display = infoText ? 'block' : 'none';
+        }
+
+        function toggleInfo(infoId) {
+            const infoElement = document.getElementById(infoId);
+            if (infoElement.style.display === 'block') {
+                infoElement.style.display = 'none';
+            } else {
+                infoElement.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
